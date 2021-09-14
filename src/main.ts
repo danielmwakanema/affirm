@@ -1,7 +1,13 @@
 import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from './app.module';
-import { AFFIRM_API_PORT, AFFIRM_API_VERSION } from './common/constants';
+import {
+  AFFIRM_API_PORT,
+  AFFIRM_API_VERSION,
+  APP_DESCRIPTION,
+  APP_NAME,
+} from './common/constants';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -13,6 +19,18 @@ async function bootstrap() {
 
   app.setGlobalPrefix(PREFIX);
   app.enableCors();
+
+  app.setGlobalPrefix(PREFIX);
+  app.enableCors();
+
+  const config = new DocumentBuilder()
+    .setTitle(APP_NAME)
+    .setDescription(APP_DESCRIPTION)
+    .setVersion(VERSION)
+    .build();
+
+  const document = SwaggerModule.createDocument(app, config);
+  SwaggerModule.setup(`${PREFIX}/docs`, app, document);
 
   await app.listen(PORT);
 }
