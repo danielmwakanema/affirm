@@ -20,9 +20,6 @@ async function bootstrap() {
   app.setGlobalPrefix(PREFIX);
   app.enableCors();
 
-  app.setGlobalPrefix(PREFIX);
-  app.enableCors();
-
   const config = new DocumentBuilder()
     .setTitle(APP_NAME)
     .setDescription(APP_DESCRIPTION)
