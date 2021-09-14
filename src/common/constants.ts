@@ -1,0 +1,2 @@
+export const AFFIRM_API_PORT = 'AFFIRM_API_PORT';
+export const AFFIRM_API_VERSION = 'AFFIRM_API_VERSION';
