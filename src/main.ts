@@ -20,7 +20,7 @@ async function bootstrap() {
   const PREFIX = `/api/${VERSION}`;
 
   app.use(helmet());
-  app.useGlobalPipes(new ValidationPipe());
+  app.useGlobalPipes(new ValidationPipe({ forbidUnknownValues: true }));
   app.enableCors();
   app.setGlobalPrefix(PREFIX);
 
