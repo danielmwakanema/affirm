@@ -57,15 +57,15 @@ export class AppController {
   }
 
   @ApiNotFoundResponse()
-  @ApiOkResponse({ type: AffirmationDto })
+  @ApiOkResponse()
   @ApiBadRequestResponse()
   @ApiInternalServerErrorResponse()
   @Patch(':id')
   async update(
     @Param('id', FindAffirmationByIdPipe) affirmation: AffirmationDocument,
     @Body() data: UpdateAffirmationDto,
-  ): Promise<AffirmationDocument> {
-    return this.affirmationsService.update(affirmation.id, data);
+  ): Promise<void> {
+    await this.affirmationsService.update(affirmation.id, data);
   }
 
   @ApiNotFoundResponse()
