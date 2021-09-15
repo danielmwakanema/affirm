@@ -5,3 +5,4 @@ export const APP_DESCRIPTION = 'GET some REST. Be affirmed.';
 export const AFFIRM_API_LOG_SIZE = 'AFFIRM_API_LOG_SIZE';
 export const AFFIRM_API_MONGO_URI = 'AFFIRM_API_MONGO_URI';
 export const AFFIRM_CACHE_TTL = 'AFFIRM_CACHE_TTL';
+export const AFFIRM_API_VOICE_DELAY = 'AFFIRM_API_VOICE_DELAY';
