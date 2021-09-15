@@ -12,6 +12,6 @@ export const StringSanitizer = {
       .replace(/\//g, '&#x2F;')
       .replace(/\\/g, '&#x5C;')
       .replace(/`/g, '&#96;')
-      .replace(/\$/, '&#36;');
+      .replace(/\$/g, '&#36;');
   },
 };
