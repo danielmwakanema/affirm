@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model, UpdateWriteOpResult } from 'mongoose';
+import { Model } from 'mongoose';
 import { CreateAffirmationDto, UpdateAffirmationDto } from './dto';
 import { AffirmationDocument, Affirmation } from './schemas/affirmation.schema';
 
@@ -20,8 +20,10 @@ export class AffirmationsService {
     return entity.save();
   }
 
-  update(id: string, data: UpdateAffirmationDto): Promise<UpdateWriteOpResult> {
-    return this.affirmationsModel.updateOne({ id }, data, { new: true }).exec();
+  update(id: string, data: UpdateAffirmationDto): Promise<AffirmationDocument> {
+    return this.affirmationsModel
+      .findByIdAndUpdate(id, data, { new: true })
+      .exec();
   }
 
   random(): Promise<AffirmationDocument> {
