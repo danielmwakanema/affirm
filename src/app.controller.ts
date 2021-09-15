@@ -20,6 +20,7 @@ import { AffirmationsService } from './affirmations/affirmations.service';
 import { CreateAffirmationDto, UpdateAffirmationDto } from './affirmations/dto';
 import { AffirmationDto } from './affirmations/dto/affirmation.dto';
 import { FindAffirmationByIdPipe } from './affirmations/pipes/find-affirmation-by-id.pipe';
+import { SanitizeAffirmationPipe } from './affirmations/pipes/sanitize-affirmation.pipe';
 import { AffirmationDocument } from './affirmations/schemas/affirmation.schema';
 import { LogInterceptor } from './log/interceptors/log.interceptor';
 
@@ -51,21 +52,21 @@ export class AppController {
   @ApiInternalServerErrorResponse()
   @Post()
   async create(
-    @Body() data: CreateAffirmationDto,
+    @Body(SanitizeAffirmationPipe) data: CreateAffirmationDto,
   ): Promise<AffirmationDocument> {
     return this.affirmationsService.create(data);
   }
 
   @ApiNotFoundResponse()
-  @ApiOkResponse()
+  @ApiOkResponse({ type: AffirmationDto })
   @ApiBadRequestResponse()
   @ApiInternalServerErrorResponse()
   @Patch(':id')
   async update(
     @Param('id', FindAffirmationByIdPipe) affirmation: AffirmationDocument,
-    @Body() data: UpdateAffirmationDto,
-  ): Promise<void> {
-    await this.affirmationsService.update(affirmation.id, data);
+    @Body(SanitizeAffirmationPipe) data: UpdateAffirmationDto,
+  ): Promise<AffirmationDocument> {
+    return this.affirmationsService.update(affirmation.id, data);
   }
 
   @ApiNotFoundResponse()
