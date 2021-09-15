@@ -10,4 +10,4 @@ WORKDIR /usr/src/app
 COPY --from=building /usr/src/app/package*.json ./
 RUN npm install --only=prod
 COPY --from=building /usr/src/app/dist ./
-CMD ["node", "main.js"]
+CMD ["node", "dist/main.js"]

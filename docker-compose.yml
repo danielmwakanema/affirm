@@ -1,0 +1,30 @@
+version: "3"
+services:
+  api:
+    depends_on:
+      - store
+      - seeder
+    restart: always
+    build: .
+    ports:
+      - "${AFFIRM_API_PORT}:${AFFIRM_API_PORT}"
+    env_file:
+      - .env
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+      
+  store:
+    image: mongo:4.4
+    container_name: mongo_db_affirm
+    volumes:
+      - mongodata:/data/db
+    ports:
+      - "27017:27017"
+  seeder:
+    build: ./seeder
+    depends_on:
+      - store
+
+volumes:
+  mongodata:
