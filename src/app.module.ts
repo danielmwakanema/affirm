@@ -13,6 +13,7 @@ import { AFFIRM_API_MONGO_URI, AFFIRM_CACHE_TTL } from './common/constants';
       imports: [ConfigModule],
       useFactory: (service: ConfigService) => ({
         uri: service.get<string>(AFFIRM_API_MONGO_URI),
+        useFindAndModify: false,
       }),
       inject: [ConfigService],
     }),
