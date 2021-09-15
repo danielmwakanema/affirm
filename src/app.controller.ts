@@ -20,7 +20,7 @@ export class AppController {
   @Post()
   @Header('Content-Type', 'text/html')
   async random(): Promise<string> {
-    const { body } = await this.affirmationsService.random();
-    return this.twilioService.say(body);
+    const affirmation = await this.affirmationsService.random();
+    return this.twilioService.say(affirmation.body);
   }
 }
