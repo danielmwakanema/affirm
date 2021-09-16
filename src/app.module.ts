@@ -6,6 +6,7 @@ import { LogModule } from './log/log.module';
 import { AffirmationsModule } from './affirmations/affirmations.module';
 import { AFFIRM_API_MONGO_URI } from './common/constants';
 import { TwilioModule } from './twilio/twilio.module';
+import { AppService } from './app.service';
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import { TwilioModule } from './twilio/twilio.module';
     AffirmationsModule,
     TwilioModule,
   ],
+  providers: [AppService],
   controllers: [AppController],
 })
 export class AppModule {}
