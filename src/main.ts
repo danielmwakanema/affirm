@@ -2,7 +2,6 @@ import { ValidationPipe } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import helmet from 'helmet';
 import { AppModule } from './app.module';
 import {
   AFFIRM_API_PORT,
@@ -19,7 +18,6 @@ async function bootstrap() {
   const VERSION = configService.get<string>(AFFIRM_API_VERSION) || 'v1';
   const PREFIX = `/api/${VERSION}`;
 
-  app.use(helmet());
   app.useGlobalPipes(new ValidationPipe());
   app.enableCors();
   app.setGlobalPrefix(PREFIX);
