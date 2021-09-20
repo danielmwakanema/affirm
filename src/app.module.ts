@@ -1,6 +1,7 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
+import helmet from 'helmet';
 import { AppController } from './app.controller';
 import { LogModule } from './log/log.module';
 import { AffirmationsModule } from './affirmations/affirmations.module';
@@ -26,4 +27,8 @@ import { AppService } from './app.service';
   providers: [AppService],
   controllers: [AppController],
 })
-export class AppModule {}
+export class AppModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(helmet()).forRoutes('*');
+  }
+}
