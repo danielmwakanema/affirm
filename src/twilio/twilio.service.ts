@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import Twilio from 'twilio';
-import { AFFIRM_API_VOICE_DELAY } from 'src/common/constants';
+import { AFFIRM_API_VOICE_DELAY } from '../common/constants';
 
 @Injectable()
 export class TwilioService {
