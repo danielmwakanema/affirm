@@ -1,5 +1,5 @@
 import { PipeTransform } from '@nestjs/common';
-import { StringSanitizer } from 'src/common/io/sanitizers';
+import { StringSanitizer } from '../../common/io/sanitizers';
 import { CreateAffirmationDto } from '../dto';
 
 type Affirmation = Partial<CreateAffirmationDto>;
