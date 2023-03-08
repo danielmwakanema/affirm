@@ -25,7 +25,7 @@
     "@nerdvision/agent": "^2.0.1",
     "@nestjs/common": "^8.0.0",
     "@nestjs/config": "^1.0.1",
-    "@nestjs/core": "^8.0.0",
+    "@nestjs/core": "^9.0.5",
     "@nestjs/mongoose": "^8.0.1",
     "@nestjs/platform-express": "^8.0.0",
     "@nestjs/swagger": "^5.0.9",
